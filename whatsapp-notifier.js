@@ -1,8 +1,8 @@
 // ========== CONFIGURACIÓN DE WHATSAPP ==========
 const WHATSAPP_CONFIG = {
-  phone: '584121040181',      // Ejemplo: '34612345678' (código país + número sin +)
-  apiKey: '3512271',    // Tu API Key de CallMeBot
-  enabled: true                 // Cambia a true cuando tengas configurado
+  phone: 'phone-number',      // Ejemplo: '34612345678' (código país + número sin +)
+  apiKey: 'api-key',          // Tu API Key de CallMeBot
+  enabled: true               // Cambia a true cuando tengas configurado
 };
 
 // Función para enviar notificación de WhatsApp
