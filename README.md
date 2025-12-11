@@ -11,24 +11,24 @@ Formulario web elegante en modo oscuro que captura solicitudes de proyectos y la
 ## Características
 
 ### Diseño y Experiencia de Usuario
-- ✨ Diseño moderno en modo oscuro con gradientes
-- 🎨 Fuente Montserrat profesional
-- 📱 Formulario responsive (móvil y desktop)
-- ⚡ Animaciones y transiciones suaves
-- ✅ Validación de campos en tiempo real
-- 💬 Feedback visual para el usuario (estados de carga, éxito y error)
+- Diseño moderno en modo oscuro con gradientes
+- Fuente Montserrat profesional
+- Formulario responsive (móvil y desktop)
+- Animaciones y transiciones suaves
+- Validación de campos en tiempo real
+- Feedback visual para el usuario (estados de carga, éxito y error)
 
 ### Funcionalidades
-- 📊 Integración automática con Google Sheets
-- 📲 Notificaciones instantáneas por WhatsApp (opcional)
-- 📅 Timestamp automático en cada lead
-- 🎯 Organización automática de datos con encabezados formateados
+- Integración automática con Google Sheets
+- Notificaciones instantáneas por WhatsApp (opcional)
+- Timestamp automático en cada lead
+- Organización automática de datos con encabezados formateados
 
 ### Ventajas Técnicas
-- 🆓 100% gratis usando Google Sheets como base de datos
-- 🚀 Sin backend requerido - deploy en segundos
-- 🔒 Datos seguros en tu cuenta de Google
-- ⚙️ Fácil de personalizar y extender
+- 100% gratis usando Google Sheets como base de datos
+- Sin backend requerido - deploy en segundos
+- Datos seguros en tu cuenta de Google
+- Fácil de personalizar y extender
 
 ## Campos del Formulario
 
