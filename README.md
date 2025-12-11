@@ -46,7 +46,7 @@ Formulario web elegante en modo oscuro que captura solicitudes de proyectos y la
 
 - Una cuenta de Google (para Google Sheets)
 - Un navegador web moderno
-- Editor de código (opcional)
+- Editor de código
 
 ## Instalación
 
