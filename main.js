@@ -1,4 +1,4 @@
-// Configuración - Reemplaza con tu URL de Google Apps Script
+// Configuración, aca puedes reemplazar con tu URL de Google Apps Script
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzIKVX-x5kEaI4nnoZki9_ecBAkaVRInQQsBXEhCk3hlq4jlqk78H9ceTPt2ov7_wlq/exec';
 
 // Seleccionar elementos del DOM
@@ -52,6 +52,11 @@ form.addEventListener('submit', async (e) => {
       },
       body: JSON.stringify(data)
     });
+
+    // Enviar notificación de WhatsApp (si está habilitado)
+    if (typeof enviarNotificacionWhatsApp === 'function') {
+      await enviarNotificacionWhatsApp(data);
+    }
 
     // Nota: Con 'no-cors' no podemos leer la respuesta, pero el envío funciona
     // Mostrar mensaje de éxito

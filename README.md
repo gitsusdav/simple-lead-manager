@@ -1,20 +1,34 @@
 # Simple Lead Manager
 
-Sistema de gestión de leads sencillo para prueba con formulario web moderno y almacenamiento en Google Sheets.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Sistema de gestión de leads con formulario web moderno, almacenamiento en Google Sheets y notificaciones por WhatsApp.
 
 ## Descripción
 
-Formulario web super elegante 🍷 que permite capturar solicitudes de proyectos y almacenarlas automáticamente en Google Sheets. Perfecto para usuarios que necesitan gestionar leads de forma simple y efectiva.
+Formulario web elegante en modo oscuro que captura solicitudes de proyectos y las almacena automáticamente en Google Sheets. Incluye notificaciones instantáneas por WhatsApp para que nunca pierdas un lead. Perfecto para freelancers, agencias y emprendedores que necesitan gestionar leads de forma simple y efectiva.
 
 ## Características
 
-- Diseño moderno en modo oscuro
-- Fuente Montserrat profesional
-- Formulario responsive (móvil y desktop)
-- Integración automática con Google Sheets
-- Validación de campos requeridos
-- Feedback visual para el usuario (estados de carga, éxito y error)
-- Sin backend requerido - 100% gratis usando Google Sheets
+### Diseño y Experiencia de Usuario
+- ✨ Diseño moderno en modo oscuro con gradientes
+- 🎨 Fuente Montserrat profesional
+- 📱 Formulario responsive (móvil y desktop)
+- ⚡ Animaciones y transiciones suaves
+- ✅ Validación de campos en tiempo real
+- 💬 Feedback visual para el usuario (estados de carga, éxito y error)
+
+### Funcionalidades
+- 📊 Integración automática con Google Sheets
+- 📲 Notificaciones instantáneas por WhatsApp (opcional)
+- 📅 Timestamp automático en cada lead
+- 🎯 Organización automática de datos con encabezados formateados
+
+### Ventajas Técnicas
+- 🆓 100% gratis usando Google Sheets como base de datos
+- 🚀 Sin backend requerido - deploy en segundos
+- 🔒 Datos seguros en tu cuenta de Google
+- ⚙️ Fácil de personalizar y extender
 
 ## Campos del Formulario
 
@@ -78,34 +92,25 @@ O hazlo simplemente desde github
 const GOOGLE_SCRIPT_URL = 'TU_URL_COPIADA_AQUI';
 ```
 
+### 4. Configurar Notificaciones de WhatsApp
+
+Si quieres recibir un mensaje de WhatsApp cada vez que alguien complete el formulario:
+
+1. Lee el archivo `CONFIGURAR-WHATSAPP.md` para obtener instrucciones detalladas
+2. En resumen:
+   - Envía "I allow callmebot to send me messages" al número +34 644 44 42 09
+   - Recibe tu API Key
+   - Configura `whatsapp-notifier.js` con tu número y API Key
+   - Cambia `enabled: true` en la configuración
+
 ## Uso
 
-### Método 1: Abrir directamente el HTML
 
 1. Navega a la carpeta del proyecto
 2. Abre `index.html` en tu navegador
 3. Completa el formulario y haz clic en "Enviar Solicitud"
-4. Verifica que los datos aparezcan en tu Google Sheet
+4. Verifica que los datos aparezcan en tu Google Sheet y que hayas recibido el mensaje a tu numero
 
-### Método 2: Usar un servidor local (recomendado para desarrollo)
-
-```bash
-# Si tienes Python 3 instalado
-python -m http.server 8000
-
-# O si tienes Node.js con npx
-npx serve
-```
-
-Luego abre `http://localhost:8000` en tu navegador.
-
-### Método 3: Desplegar en GitHub Pages (gratis)
-
-1. Ve a tu repositorio en GitHub
-2. Settings → Pages
-3. En "Source" selecciona la rama `main` y carpeta `/ (root)`
-4. Guarda y espera unos minutos
-5. Tu formulario estará disponible en `https://TU_USUARIO.github.io/simple-lead-manager/`
 
 ## Estructura del Proyecto
 
@@ -114,73 +119,53 @@ simple-lead-manager/
 │
 ├── index.html                      # Formulario principal
 ├── main.js                         # Lógica del formulario
+├── whatsapp-notifier.js            # Bot de WhatsApp 
+│
 ├── google-script.gs                # Código para Google Apps Script
-├── INSTRUCCIONES-GOOGLE-SHEETS.md  # Guía detallada de configuración
-└── README.md                       # Este archivo
+│
+├── INSTRUCCIONES-GOOGLE-SHEETS.md  # Guía de configuración de Google Sheets
+├── CONFIGURAR-WHATSAPP.md          # Guía de configuración de WhatsApp
+├── README.md                       # Este archivo
+
+│
+├── .gitignore                      # Archivos ignorados por Git
+└── LICENSE                         # Licencia MIT
 ```
 
-## Personalización
 
-### Cambiar colores
 
-Edita las clases de Tailwind en `index.html`:
-
-```html
-<!-- Cambiar gradiente del fondo -->
-<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-
-<!-- Cambiar gradiente del título -->
-<h1 class="... bg-gradient-to-r from-blue-400 to-purple-500">
-```
-
-### Añadir más campos
-
-1. Agrega el campo en `index.html`
-2. Crea una variable en `main.js`
-3. Añade el campo al objeto `data`
-4. Actualiza el encabezado en `google-script.gs`
-
-### Cambiar la fuente
-
-Reemplaza el enlace de Google Fonts en `index.html` y actualiza la configuración de Tailwind.
-
-## Solución de Problemas
-
-### El formulario no envía datos
-
-- Verifica que la URL en `main.js` sea correcta
-- Asegúrate de que la implementación en Google Apps Script esté configurada con acceso "Cualquier persona"
-- Revisa la consola del navegador (F12) para ver errores
-
-### Los datos no aparecen en Google Sheets
-
-- Verifica que hayas autorizado la aplicación en Google
-- Comprueba que la URL de implementación sea la correcta
-- Prueba la función `testDoPost()` en el editor de Apps Script
-
-### Error de CORS
-
-- Es normal ver advertencias de CORS en la consola debido al modo `no-cors`
-- Si los datos llegan a la hoja, el formulario está funcionando correctamente
 
 ## Tecnologías Utilizadas
 
-- HTML5
-- CSS3 con Tailwind CSS
-- JavaScript (Vanilla)
-- Google Apps Script
-- Google Sheets API
+- **Frontend**: HTML5, CSS3 con Tailwind CSS
+- **JavaScript**: Vanilla JS (sin frameworks)
+- **Backend**: Google Apps Script
+- **Base de datos**: Google Sheets
+- **Notificaciones**: CallMeBot WhatsApp API
+- **Tipografía**: Google Fonts (Montserrat)
+- **Hosting**: Compatible con GitHub Pages, Netlify, Vercel, o cualquier servidor estático
 
-## Seguridad
+## Flujo de Trabajo
+
+1. **Cliente completa el formulario** → Valida campos requeridos
+2. **Envío a Google Sheets** → Los datos se guardan automáticamente en una fila nueva
+3. **Notificación WhatsApp** → Recibes un mensaje instantáneo con los datos del lead
+4. **Gestión** → Puedes gestionar, filtrar y analizar tus leads directamente en Google Sheets
+
+## Seguridad y Privacidad
 
 - El formulario usa modo `no-cors` para evitar problemas de CORS
 - No se almacenan datos sensibles en el cliente
 - La URL de Google Apps Script es segura y puede ser pública
 - Los datos solo son accesibles desde tu cuenta de Google
+- La API Key de WhatsApp nunca se expone públicamente si usas `whatsapp-notifier.js`
+- **Importante**: No subas archivos con tu API Key a repositorios públicos
 
 ## Contribuir
 
-Las contribuciones son bienvenidas. Por favor:
+Las contribuciones son bienvenidas. 
+
+**Instrucciones:**
 
 1. Haz fork del proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
@@ -188,20 +173,21 @@ Las contribuciones son bienvenidas. Por favor:
 4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
 5. Abre un Pull Request
 
+
 ## Licencia
 
 Este proyecto es de código abierto y está disponible bajo la Licencia MIT.
 
-## Contacto
-
-Si tienes preguntas o sugerencias, no dudes en abrir un issue en el repositorio.
-
 ## Créditos
 
-- Diseño: Tailwind CSS
-- Tipografía: Google Fonts (Montserrat)
-- Almacenamiento: Google Sheets
+Construido con:
+
+- **Framework CSS**: [Tailwind CSS](https://tailwindcss.com)
+- **Tipografía**: [Google Fonts - Montserrat](https://fonts.google.com/specimen/Montserrat)
+- **Backend**: [Google Apps Script](https://developers.google.com/apps-script)
+- **Base de datos**: [Google Sheets](https://sheets.google.com)
+- **WhatsApp API**: [CallMeBot](https://callmebot.com)
 
 ---
 
-Hecho con ❤️ para simplificar la gestión de leads
+*Si este proyecto te ayudó, considera darle una estrella en GitHub*
