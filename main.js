@@ -1,5 +1,9 @@
-// Configuración, aca puedes reemplazar con tu URL de Google Apps Script
-const GOOGLE_SCRIPT_URL = 'url-de-tu-google-apps-script';
+// Configuración leída desde config.js (copia config.example.js a config.js)
+const GOOGLE_SCRIPT_URL = (window.APP_CONFIG && window.APP_CONFIG.GOOGLE_SCRIPT_URL) || '';
+
+if (!GOOGLE_SCRIPT_URL) {
+  console.warn('GOOGLE_SCRIPT_URL no está definida. Copia config.example.js a config.js y configura tu URL.');
+}
 
 // Seleccionar elementos del DOM
 const form = document.getElementById('leadForm');
@@ -53,9 +57,9 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify(data)
     });
 
-    // Enviar notificación de WhatsApp (si está habilitado)
-    if (typeof enviarNotificacionWhatsApp === 'function') {
-      await enviarNotificacionWhatsApp(data);
+    // Enviar notificación de Telegram (si está habilitado)
+    if (typeof enviarNotificacionTelegram === 'function') {
+      await enviarNotificacionTelegram(data);
     }
 
     // Nota: Con 'no-cors' no podemos leer la respuesta, pero el envío funciona

@@ -2,11 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Sistema de gestión de leads con formulario web moderno, almacenamiento en Google Sheets y notificaciones por WhatsApp.
+Sistema de gestión de leads con formulario web moderno, almacenamiento en Google Sheets y notificaciones por Telegram.
 
 ## Descripción
 
-Formulario web elegante en modo oscuro que captura solicitudes de proyectos y las almacena automáticamente en Google Sheets. Incluye notificaciones instantáneas por WhatsApp para que nunca pierdas un lead. Perfecto para freelancers, agencias y emprendedores que necesitan gestionar leads de forma simple y efectiva.
+Formulario web elegante en modo oscuro que captura solicitudes de proyectos y las almacena automáticamente en Google Sheets. Incluye notificaciones instantáneas por Telegram para que nunca pierdas un lead. Perfecto para freelancers, agencias y emprendedores que necesitan gestionar leads de forma simple y efectiva.
 
 ## Características
 
@@ -20,7 +20,7 @@ Formulario web elegante en modo oscuro que captura solicitudes de proyectos y la
 
 ### Funcionalidades
 - Integración automática con Google Sheets
-- Notificaciones instantáneas por WhatsApp (opcional)
+- Notificaciones instantáneas por Telegram (opcional)
 - Timestamp automático en cada lead
 - Organización automática de datos con encabezados formateados
 
@@ -83,24 +83,34 @@ O hazlo simplemente desde github
 5. **COPIA LA URL** que aparece (se verá como `https://script.google.com/macros/s/...`)
 6. Autoriza la aplicación cuando Google te lo pida
 
-### 3. Configurar la URL en el Proyecto
+### 3. Configurar las Credenciales
 
-1. Abre el archivo `main.js`
-2. En la línea 2, reemplaza la URL existente con tu URL:
+El proyecto usa un archivo `config.js` (ignorado por git) para almacenar tus credenciales. Para configurarlo:
+
+1. Copia el archivo `config.example.js` y renómbralo como `config.js`
+2. Abre `config.js` y reemplaza los valores con tus credenciales reales:
 
 ```javascript
-const GOOGLE_SCRIPT_URL = 'TU_URL_COPIADA_AQUI';
+window.APP_CONFIG = {
+  GOOGLE_SCRIPT_URL: 'TU_URL_COPIADA_AQUI',
+  TELEGRAM: {
+    botToken: 'TU_BOT_TOKEN',
+    chatId: 'TU_CHAT_ID',
+    enabled: true
+  }
+};
 ```
 
-### 4. Configurar Notificaciones de WhatsApp
+### 4. Configurar Notificaciones de Telegram
 
-Si quieres recibir un mensaje de WhatsApp cada vez que alguien complete el formulario:
+Si quieres recibir un mensaje de Telegram cada vez que alguien complete el formulario:
 
-1. Lee el archivo `CONFIGURAR-WHATSAPP.md` para obtener instrucciones detalladas
+1. Lee el archivo `CONFIGURAR-TELEGRAM.md` para obtener instrucciones detalladas
 2. En resumen:
-   - Envía "I allow callmebot to send me messages" al número +34 644 44 42 09
-   - Recibe tu API Key
-   - Configura `whatsapp-notifier.js` con tu número y API Key
+   - Crea un bot hablando con @BotFather en Telegram y obtén tu Bot Token
+   - Obtén tu Chat ID hablando con @userinfobot
+   - Inicia una conversación con tu bot (envía `/start`)
+   - Agrega tu Bot Token y Chat ID en `config.js`
    - Cambia `enabled: true` en la configuración
 
 ## Uso
@@ -119,12 +129,13 @@ simple-lead-manager/
 │
 ├── index.html                      # Formulario principal
 ├── main.js                         # Lógica del formulario
-├── whatsapp-notifier.js            # Bot de WhatsApp 
+├── telegram-notifier.js            # Bot de Telegram
+├── config.example.js               # Plantilla de configuración (copiar a config.js)
 │
 ├── google-script.gs                # Código para Google Apps Script
 │
 ├── INSTRUCCIONES-GOOGLE-SHEETS.md  # Guía de configuración de Google Sheets
-├── CONFIGURAR-WHATSAPP.md          # Guía de configuración de WhatsApp
+├── CONFIGURAR-TELEGRAM.md          # Guía de configuración de Telegram
 ├── README.md                       # Este archivo
 
 │
@@ -141,7 +152,7 @@ simple-lead-manager/
 - **JavaScript**: Vanilla JS (sin frameworks)
 - **Backend**: Google Apps Script
 - **Base de datos**: Google Sheets
-- **Notificaciones**: CallMeBot WhatsApp API
+- **Notificaciones**: Telegram Bot API
 - **Tipografía**: Google Fonts (Montserrat)
 - **Hosting**: Compatible con GitHub Pages, Netlify, Vercel, o cualquier servidor estático
 
@@ -149,7 +160,7 @@ simple-lead-manager/
 
 1. **Cliente completa el formulario** → Valida campos requeridos
 2. **Envío a Google Sheets** → Los datos se guardan automáticamente en una fila nueva
-3. **Notificación WhatsApp** → Recibes un mensaje instantáneo con los datos del lead
+3. **Notificación Telegram** → Recibes un mensaje instantáneo con los datos del lead
 4. **Gestión** → Puedes gestionar, filtrar y analizar tus leads directamente en Google Sheets
 
 ## Seguridad y Privacidad
@@ -158,8 +169,9 @@ simple-lead-manager/
 - No se almacenan datos sensibles en el cliente
 - La URL de Google Apps Script es segura y puede ser pública
 - Los datos solo son accesibles desde tu cuenta de Google
-- La API Key de WhatsApp nunca se expone públicamente si usas `whatsapp-notifier.js`
-- **Importante**: No subas archivos con tu API Key a repositorios públicos
+- Las credenciales se guardan en `config.js`, que está incluido en `.gitignore` y nunca se sube al repositorio
+- El Bot Token de Telegram se mantiene fuera del código fuente
+- **Importante**: No subas el archivo `config.js` con tus credenciales reales a repositorios públicos
 
 ## Contribuir
 
@@ -186,7 +198,7 @@ Construido con:
 - **Tipografía**: [Google Fonts - Montserrat](https://fonts.google.com/specimen/Montserrat)
 - **Backend**: [Google Apps Script](https://developers.google.com/apps-script)
 - **Base de datos**: [Google Sheets](https://sheets.google.com)
-- **WhatsApp API**: [CallMeBot](https://callmebot.com)
+- **Telegram API**: [Telegram Bot API](https://core.telegram.org/bots/api)
 
 ---
 

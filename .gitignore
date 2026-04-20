@@ -1,8 +1,6 @@
 # Archivos de configuración con credenciales
-# IMPORTANTE: No subir archivos con tu API Key configurada
-
-# Descomentar la siguiente línea si has configurado tu API Key
-# whatsapp-notifier.js
+# IMPORTANTE: No subir archivos con tus credenciales reales
+config.js
 
 # Archivos del sistema
 .DS_Store
